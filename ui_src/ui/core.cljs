@@ -1,6 +1,7 @@
 (ns ui.core
   (:require [reagent.core :as reagent :refer [atom]]
-            [clojure.string :as string :refer [split-lines]]))
+            [clojure.string :as string :refer [split-lines]]
+            [reagent-material-ui.core :as md]))
 
 (def join-lines (partial string/join "\n"))
 
@@ -28,6 +29,13 @@
     (reset! command "")))
 
 (defn root-component []
+  [md/MuiThemeProvider {:mui-theme (md/getMuiTheme)}   
+   [:div
+    [md/AppBar {:title "Hello"}]
+    [md/Card {}
+     [md/CardText {} "Material UI!"]]]])
+
+#_(defn root-component []
   [:div
    [:div.logos
     [:img.electron {:src "img/electron-logo.png"}]
